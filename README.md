@@ -1,7 +1,13 @@
 # USSF Stuff Tracker
 
 ## Recreate
-1. 
+1. Open Terminal
+2. 'cd' into the folder that you want to install to
+3. 'git clone https://github.com/keithvandyck/ussf-stuff-tracker.git'
+4. 'cd ussf-stuff-tracker'
+5. 'npm install'
+6. 'npm uninstall punycode'
+
 
 ## Starting the Project from Scratch
 1. npx create-next-app@latest
@@ -36,7 +42,3 @@
   - ~Unauthenticated users should be able to view all items, and any single item.~
 - ~As an inventory manager I want to be able to view all items created by every inventory manager so that I can browse every item.~
   - ~Unauthenticated users should be able to view all items, and any single item.~
-- KEITH: protect routes
-	/add
-	/account
-	/item/[id]
