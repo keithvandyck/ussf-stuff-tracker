@@ -4,10 +4,10 @@ import { authenticateRequest } from '../../../../lib/auth'
 
 export async function GET(
   request: NextRequest, 
-  {params}: {params: Promise<{ id: string }>} 
+  context: { params: { id: string } }
 ) {
-	const { id } = await params;
 
+const { id } = await context.params;
   console.log("--------");
   console.log("--------");
   console.log("--------");
