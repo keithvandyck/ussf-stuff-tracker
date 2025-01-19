@@ -4,12 +4,24 @@ import { authenticateRequest } from '../../../../lib/auth'
 
 export async function GET(
   request: NextRequest, 
-  context: { params: { id: string } }
+  { params }: { params: { id: string } } 
 ) {
+	const parameters = await params;
+	const id = parameters.id;
+
+  console.log("--------");
+  console.log("--------");
+  console.log("--------");
+  console.log("-------- " + id);
+  console.log("--------");
+  console.log("--------");
+  console.log("--------");
+  console.log("--------");
+  
   try {
 	const item = await prisma.item.findUnique({
 	  where: {
-		id: parseInt(context.params.id)
+		id: parseInt(id)
 	  },
 	  include: {
 		user: {
