@@ -9,7 +9,7 @@ export default function Home() {
         <p id="go">... ... Track Stuff!</p>
       </div>
       <Link className="i-am-a-button" href="/register">Register Now</Link>
-      <Link className="i-am-a-button" href="/register">View All Items</Link>
+      <Link className="i-am-a-button" href="/list">View All Items</Link>
     </div>
   );
 }

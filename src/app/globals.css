@@ -50,6 +50,7 @@ a {
 #top-bar {
   background-color: #2d3436;
   padding: 20px;
+  margin-bottom: 40px;
 }
 
 #top-title b {
@@ -101,7 +102,10 @@ a {
   padding: 10px 20px;
   background-color: #6c5ce7;
   color: #ffeaa7;
+  margin-top: 20px;
   margin-right: 20px;
+  border: 0;
+  font-size: 15pt;
 }
 
 .i-am-a-button:hover {
@@ -109,3 +113,33 @@ a {
   color: #fdcb6e;
 }
 
+#main-form label {
+  opacity: 0.5;
+  font-weight: bold;
+  display: block;
+  margin-top: 20px;
+}
+
+#main-form input[type=text], input[type="password"] {
+  font-size: 12pt;
+  padding: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #171717;
+  color: #171717;
+  outline: none;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+#main-form input[type=text]:focus {
+  background-color: #ffeaa7;
+}
+
+#main-form .yuck-error {
+  color: #d63031;
+  font-weight: bold;
+  margin: 20px 0;
+}

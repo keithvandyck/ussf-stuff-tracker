@@ -1,10 +1,15 @@
 import { SignJWT } from 'jose'
 import { cookies } from 'next/headers'
+import { NextResponse } from 'next/server'
+import { prisma } from '../../../../lib/prisma'
+import bcrypt from 'bcryptjs'
 
 export async function POST(request: Request) {
   try {
+	  console.log("checkpoint A")
 	const { username, password } = await request.json()
 
+	  console.log("checkpoint B")
 	if (!username || !password) {
 	  return NextResponse.json(
 		{ error: 'Missing username or password' },

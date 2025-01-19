@@ -1,16 +1,9 @@
 'use client'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useAuth } from './authprovider'
 
 const TopBar = () => {
-	const [user, setUser] = useState(null)
-	
-	useEffect(() => {
-		fetch('/api/auth/me')
-		  .then(res => res.json())
-		  .then(data => setUser(data))
-	  }, [])
-
+	const { user, loading } = useAuth();
 	
 	const accountItems = user && (
 		<div id="account-nav-items">
@@ -21,7 +14,7 @@ const TopBar = () => {
 
 	const visitorItems = (
 		<div id="visitor-nav-items">
-			<Link href="/register">SIGN UP</Link>
+			<Link href="/register">REGISTER</Link>
 			<Link href="/login">LOG IN</Link>
 		</div>
 	);
