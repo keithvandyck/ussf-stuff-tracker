@@ -6,10 +6,8 @@ import bcrypt from 'bcryptjs'
 
 export async function POST(request: Request) {
   try {
-	  console.log("checkpoint A")
 	const { username, password } = await request.json()
 
-	  console.log("checkpoint B")
 	if (!username || !password) {
 	  return NextResponse.json(
 		{ error: 'Missing username or password' },
@@ -45,7 +43,8 @@ export async function POST(request: Request) {
 	  .setExpirationTime('24h')
 	  .sign(new TextEncoder().encode(process.env.JWT_SECRET))
 
-	cookies().set('auth-token', token, {
+	const cookieStore = await cookies()
+	await cookieStore.set('auth-token', token, {
 	  httpOnly: true,
 	  secure: process.env.NODE_ENV === 'production',
 	  sameSite: 'strict',

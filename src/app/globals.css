@@ -143,3 +143,35 @@ a {
   font-weight: bold;
   margin: 20px 0;
 }
+
+.text-link {
+  color: #6c5ce7;
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#account table {
+  width: 100%;
+  margin: 30px 0 10px 0;
+}
+
+#account table th {
+  padding: 5px 10px;
+  background-color: #dfe6e9;
+  text-align: left;
+}
+
+#account #tableItemName {
+  width: 190px;
+}
+
+#account #tableQuantity {
+  width: 100px;
+}
+
+#account table td {
+  padding: 5px 10px;
+  background-color: #f4f4f4;
+}
+

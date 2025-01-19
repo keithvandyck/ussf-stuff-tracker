@@ -1,6 +1,6 @@
-import { prisma } from '@/lib/prisma'
+import { prisma } from '../../../lib/prisma'
 import { NextResponse } from 'next/server'
-import { authenticateRequest } from '@/lib/auth'
+import { authenticateRequest } from '../../../lib/auth'
 
 export async function GET(request: Request) {
   try {
@@ -10,13 +10,10 @@ export async function GET(request: Request) {
 	const items = await prisma.item.findMany({
 	  where: {
 		userId: user.id
-	  },
-	  orderBy: {
-		createdAt: 'desc'
 	  }
 	})
 
-	return NextResponse.json(items)
+	return NextResponse.json(items, { status: 200 })
   } catch (error) {
 	console.error('Error fetching items:', error)
 	return NextResponse.json(
