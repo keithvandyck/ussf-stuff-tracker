@@ -2,21 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '../../../../lib/prisma'
 import { authenticateRequest } from '../../../../lib/auth'
 
-type Params = {
-  params: {
-	id: string
-  }
-}
-
 export async function GET(
   request: NextRequest, 
-  { params }: Params
+  context: { params: { id: string } }
 ) {
   try {
-	
 	const item = await prisma.item.findUnique({
 	  where: {
-		id: parseInt(params.id)
+		id: parseInt(context.params.id)
 	  },
 	  include: {
 		user: {
@@ -46,7 +39,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  { params }: Params
+  context: { params: { id: string } }
 ) {
   try {
 	const user = await authenticateRequest(request)
@@ -63,7 +56,7 @@ export async function PUT(
 	
 	const item = await prisma.item.update({
 	  where: {
-		id: parseInt(params.id),
+		id: parseInt(context.params.id),
 		userId: user.id
 	  },
 	  data: {
@@ -85,7 +78,7 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest, 
-  { params }: Params
+  context: { params: { id: string } }
 ) {
   try {
 	const user = await authenticateRequest(request)
@@ -93,7 +86,7 @@ export async function DELETE(
 	
 	await prisma.item.delete({
 	  where: {
-		id: parseInt(params.id),
+		id: parseInt(context.params.id),
 		userId: user.id
 	  }
 	})
