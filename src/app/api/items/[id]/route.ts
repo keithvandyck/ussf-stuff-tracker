@@ -2,20 +2,21 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '../../../../lib/prisma'
 import { authenticateRequest } from '../../../../lib/auth'
 
+type Params = {
+  params: {
+	id: string
+  }
+}
+
 export async function GET(
   request: NextRequest, 
-  context: { params: { id: string } }
+  { params }: Params
 ) {
   try {
-	const user = await authenticateRequest(request)
-	if (!(user instanceof Object)) return user
-	
-	const { id } = context.params
 	
 	const item = await prisma.item.findUnique({
 	  where: {
-		id: parseInt(id),
-		userId: user.id
+		id: parseInt(params.id)
 	  },
 	  include: {
 		user: {
@@ -45,13 +46,12 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest, 
-  context: { params: { id: string } }
+  { params }: Params
 ) {
   try {
 	const user = await authenticateRequest(request)
 	if (!(user instanceof Object)) return user
 	
-	const { id } = context.params
 	const { itemName, description, quantity } = await request.json()
 	
 	if (!itemName || typeof quantity !== 'number') {
@@ -63,7 +63,7 @@ export async function PUT(
 	
 	const item = await prisma.item.update({
 	  where: {
-		id: parseInt(id),
+		id: parseInt(params.id),
 		userId: user.id
 	  },
 	  data: {
@@ -85,17 +85,15 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest, 
-  context: { params: { id: string } }
+  { params }: Params
 ) {
   try {
 	const user = await authenticateRequest(request)
 	if (!(user instanceof Object)) return user
 	
-	const { id } = context.params
-	
 	await prisma.item.delete({
 	  where: {
-		id: parseInt(id),
+		id: parseInt(params.id),
 		userId: user.id
 	  }
 	})
