@@ -12,7 +12,7 @@ export default function Account() {
   useEffect(() => {
 	const fetchItems = async () => {
 	  try {
-		const response = await fetch('/api/items');
+		const response = await fetch('/api/listing');
 		const data = await response.json();
 
 		if (!response.ok) {
@@ -47,12 +47,12 @@ export default function Account() {
   }
   
   const gotoItem = (id) => {
-	router.push(`/item/${id}`)
+	router.push(`/list/${id}`)
   }
   
   return (
 	<div id="account">
-	  <h1>My Inventory</h1>
+	  <h1>All Inventory</h1>
 	  
 	  {items.length === 0 ? (
 		<p>No items in your inventory yet.</p>
@@ -76,9 +76,6 @@ export default function Account() {
 		  </tbody>
 		</table>
 	  )}
-	  
-	  <Link className="i-am-a-button" href="/add">Add Item</Link>
-	  <Link className="i-am-a-button" href="/list">View All Inventory Manager's Items</Link>
 
 	</div>
   )

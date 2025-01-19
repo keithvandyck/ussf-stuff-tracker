@@ -8,6 +8,7 @@ const TopBar = () => {
 	const accountItems = user && (
 		<div id="account-nav-items">
 			<span>Welcome {user.username}!</span>
+			<Link href="/account">MY INVENTORY</Link>
 			<Link href="/logout">LOG OUT</Link>
 		</div>
 	);
