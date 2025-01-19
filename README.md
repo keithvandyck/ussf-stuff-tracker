@@ -7,6 +7,8 @@
 4. 'cd ussf-stuff-tracker'
 5. 'npm install'
 6. 'npm uninstall punycode'
+7. 'npm run dev'
+8. Open web browser & navigate to http://localhost:3000
 
 
 ## Starting the Project from Scratch
