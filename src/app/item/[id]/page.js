@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import React, { Suspense } from 'react'
 import { use } from 'react'
 import Link from 'next/link'
+import { useAuth } from '../../../../components/authprovider'
 
 export default function ItemPage({ params }) {
 	const router = useRouter();
@@ -15,7 +16,8 @@ export default function ItemPage({ params }) {
 	const [error, setError] = useState('');
 	const [quantity, setQuantity] = useState(1);
 	const [isEditing, setIsEditing] = useState(false);
-
+    const { user } = useAuth();
+  
 	useEffect(() => {
 		const fetchItem = async () => {
 			try {
@@ -99,6 +101,8 @@ export default function ItemPage({ params }) {
 			setError(err.message);
 		}
 	};
+
+	if (!user) return null;
 
 	if (loading) return < div > Loading... < /div>
 	if (error) return < div > Error: { error } < /div>

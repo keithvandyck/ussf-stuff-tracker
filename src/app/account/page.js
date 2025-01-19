@@ -45,6 +45,8 @@ export default function Account() {
 	if (error) {
 		return < div > Error: { error } < /div>;
 	}
+	
+	if (!user) return null;
 
 	const visibleItems = filterItems ?
 		items.filter(item => (item.user.username) === user.username) :
@@ -71,59 +73,45 @@ export default function Account() {
 		return (aUsername === user.username);
 	}
 
-	return ( <
-		div id = "account" >
-		<
-		h1 > My Inventory < /h1> {
+	return ( 
+		<div id = "account" >
+		<h1> My Inventory </h1> {
 			user &&
-				<
-				>
-				<
-				span className = "text-link"
-			onClick = {
-					() => setFilterItems(!filterItems) } > { filterItems ? 'Show All Items' : 'Show only my items' } <
-				/span> <
-				/>
+				<>
+				<span className = "text-link" onClick = { () => setFilterItems(!filterItems) } > { filterItems ? 'Show All Items' : 'Show only my items' } </span> 
+				</>
 		}
 
 		{
-			items.length === 0 ? ( <
-				p > No items in your inventory yet. < /p>
-			) : ( <
-				table >
-				<
-				thead >
-				<
-				tr >
-				<
-				th id = "tableItemName" > Item Name < /th> <
-				th id = "tableDescription" > Description < /th> <
-				th id = "tableQuantity" > Quantity < /th> <
-				/tr> <
-				/thead> <
-				tbody > {
-					visibleItems.map((item) => ( <
-						tr key = { item.id } >
-						<
-						td > < span className = "text-link"
-						onClick = {
-							() => isMyItem(item.user.username) ? gotoItem(item.id) : gotoReadOnlyItem(item.id) } > { item.itemName } < /span></td >
-						<
-						td > { truncateDescriptionIfNeeded(item.description) } < /td> <
-						td > { item.quantity } < /td> <
-						/tr>
+			items.length === 0 ? ( 
+				<p> No items in your inventory yet. </p>
+			) : ( 
+				<table>
+				<thead>
+				<tr>
+				<th id="tableItemName">Item Name</th>
+				<th id="tableDescription">Description</th>
+				<th id="tableQuantity">Quantity</th>
+				</tr>
+				</thead><tbody>
+				{
+					visibleItems.map((item) => ( 
+						<tr key={ item.id }>
+						<td>
+						<span className = "text-link" onClick = { () => isMyItem(item.user.username) ? gotoItem(item.id) : gotoReadOnlyItem(item.id) } > { item.itemName } </span>
+						</td>
+						<td>{ truncateDescriptionIfNeeded(item.description) }</td>
+						<td>{ item.quantity }</td>
+						</tr>
 					))
-				} <
-				/tbody> <
-				/table>
+				}
+				</tbody>
+				</table>
 			)
 		}
 
-		<
-		Link className = "i-am-a-button"
-		href = "/add" > Add Item < /Link>
+		<Link className = "i-am-a-button" href = "/add" > Add Item < /Link>
 
-		<
-		/div>
-	)
+		</div>
+		)
 }

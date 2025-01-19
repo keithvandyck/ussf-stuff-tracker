@@ -3,13 +3,15 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useAuth } from '../../../components/authprovider'
 
 export default function AddItem() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
-  
+  const { user } = useAuth();
+
   const lessThings = () => {
 	  setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
   }
@@ -48,6 +50,8 @@ export default function AddItem() {
 	  setLoading(false)
 	}
   }
+
+	if (!user) return null;
 
   return (
 	  <div id="main-form">
