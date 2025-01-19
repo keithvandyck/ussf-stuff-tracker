@@ -1,13 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;500;600;700&display=swap');
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #2d3436;
 }
 
 html,
@@ -25,6 +20,7 @@ body {
 }
 
 * {
+  font-family: 'Saira Condensed', sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -40,3 +36,76 @@ a {
     color-scheme: dark;
   }
 }
+
+.box-it-in {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.split-up-the-children {
+  display: flex;
+  justify-content: space-between;
+}
+
+#top-bar {
+  background-color: #2d3436;
+  padding: 20px;
+}
+
+#top-title b {
+  font-size: 18pt;
+  font-weight: bold;
+  color: #ffeaa7;
+  margin-right: 10px;
+}
+
+#top-bar span {
+  font-size: 12pt;
+  font-weight: light;
+  color: #ffffff;
+  opacity: 0.5;
+}
+
+#login-items a {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #74b9ff;
+  margin-left: 20px;
+}
+
+#login-items a:hover {
+  text-decoration: underline;
+}
+
+#big-banner {
+  padding: 45px 0 20px 0;
+  font-size: 45pt;
+  font-weight: bold;
+}
+
+#big-banner p#ready {
+  color: #74b9ff;
+}
+
+#big-banner p#set {
+  color: #0984e3;  
+}
+
+#big-banner p#go {
+  color: #6c5ce7;
+}
+
+.i-am-a-button {
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #6c5ce7;
+  color: #ffeaa7;
+  margin-right: 20px;
+}
+
+.i-am-a-button:hover {
+  background-color: #2d3436;
+  color: #fdcb6e;
+}
+
