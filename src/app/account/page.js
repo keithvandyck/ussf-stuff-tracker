@@ -1,8 +1,10 @@
 'use client'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Account() {
+  const router = useRouter();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -43,7 +45,11 @@ export default function Account() {
 		  return description;
 	  }
   }
-
+  
+  const gotoItem = (id) => {
+	router.push(`/item/${id}`)
+  }
+  
   return (
 	<div id="account">
 	  <h1>My Inventory</h1>
@@ -62,7 +68,7 @@ export default function Account() {
 		  <tbody>
 			{items.map((item) => (
 			  <tr key={item.id}>
-				<td>{item.itemName}</td>
+				<td><span className="text-link" onClick={() => gotoItem(item.id)}>{item.itemName}</span></td>
 				<td>{truncateDescriptionIfNeeded(item.description)}</td>
 				<td>{item.quantity}</td>
 			  </tr>

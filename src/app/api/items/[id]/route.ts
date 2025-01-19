@@ -1,6 +1,6 @@
-import { prisma } from '@/lib/prisma'
+import { prisma } from '../../../../lib/prisma'
 import { NextResponse } from 'next/server'
-import { authenticateRequest } from '@/lib/auth'
+import { authenticateRequest } from '../../../../lib/auth'
 
 interface RouteParams {
   params: {
@@ -12,7 +12,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   try {
 	const user = await authenticateRequest(request)
 	if (!(user instanceof Object)) return user
-
+	
 	const item = await prisma.item.findUnique({
 	  where: {
 		id: parseInt(params.id),
