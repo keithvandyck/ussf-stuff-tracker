@@ -10,13 +10,10 @@ interface RouteParams {
 
 export async function GET(request: Request, { params }: RouteParams) {
   try {
-	const user = await authenticateRequest(request)
-	if (!(user instanceof Object)) return user
 	
 	const item = await prisma.item.findUnique({
 	  where: {
-		id: parseInt(params.id),
-		userId: user.id
+		id: parseInt(params.id)
 	  }
 	})
 

@@ -18,6 +18,8 @@ export async function POST(request: Request) {
 	const user = await prisma.user.findUnique({
 	  where: { username }
 	})
+	
+	console.log("Found user: " + user.username);
 
 	if (!user) {
 	  return NextResponse.json(

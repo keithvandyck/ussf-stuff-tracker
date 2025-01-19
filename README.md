@@ -32,10 +32,10 @@
 - ~As a visitor, who is not logged in, I want to be able to view all items created by every inventory manager so that I can browse every item.~
   - ~Unauthenticated users should be able to view all items, and any single item.~
   - ~The items should only display the first 100 characters of its description with “...” at the end if it is longer than 100 characters.~
-- As a visitor, who is not logged in, I want to be able to view a specific item created by any user so that I can see all of its details.
-  - Unauthenticated users should be able to view all items, and any single item.
-- As an inventory manager I want to be able to view all items created by every inventory manager so that I can browse every item.
-  - Unauthenticated users should be able to view all items, and any single item.
+- ~As a visitor, who is not logged in, I want to be able to view a specific item created by any user so that I can see all of its details.~
+  - ~Unauthenticated users should be able to view all items, and any single item.~
+- ~As an inventory manager I want to be able to view all items created by every inventory manager so that I can browse every item.~
+  - ~Unauthenticated users should be able to view all items, and any single item.~
 - KEITH: protect routes
 	/add
 	/account

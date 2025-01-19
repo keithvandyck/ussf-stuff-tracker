@@ -22,7 +22,7 @@ export default function LoginPage() {
 	  })
 
 	  if (!res.ok) throw new Error('Login failed')
-	  
+	  console.log("refreshing username: " + res.username)
 	  await refreshUser()
 	  router.push('/account')
 	} catch (err) {

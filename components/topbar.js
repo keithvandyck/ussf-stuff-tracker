@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useAuth } from './authprovider'
 
 const TopBar = () => {
-	const { user, loading } = useAuth();
+	const { user } = useAuth();
 	
 	const accountItems = user && (
 		<div id="account-nav-items">
